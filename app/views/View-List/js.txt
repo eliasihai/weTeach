@@ -1,0 +1,74 @@
+const applicationSettings = require("tns-core-modules/application-settings");
+const { fromObject } = require('tns-core-modules/data/observable');
+const httpModule = require("tns-core-modules/http");
+const observableModule = require("tns-core-modules/data/observable");
+const segmentedBarModule = require("tns-core-modules/ui/segmented-bar");
+const dialogs = require("tns-core-modules/ui/dialogs");
+const searchBarModule = require("tns-core-modules/ui/search-bar");
+
+const obj = fromObjectRecursive({
+    firstname: '',
+    lastname: '',
+    email: '',
+});
+
+
+exports.loaded = function(args) {
+    const page = args.object;
+    page.bindingContext = obj;
+    console.log("student page ");
+
+    let u = JSON.parse(applicationSettings.getString('user'));
+    obj.firstname = u.firstname;
+    obj.lastname = u.lastname;
+    obj.email = u.email;
+
+    const stackLayout = page.getViewById("stackLayoutId");
+    // creating new SearchBar
+    vm.set("sbResult", "");
+    const searchBar = new searchBarModule.SearchBar();
+    // set up SearchBar submit event
+    searchBar.on(searchBarModule.SearchBar.submitEvent, (args) => {
+        console.log("Search for ", args.object.text);
+        dialogs.alert(`Search for ${args.object.text}`)
+            .then(() => {
+                console.log("Dialog closed!");
+            });
+    });
+    // set up SearchBar clear event
+    searchBar.on(searchBarModule.SearchBar.clearEvent, (args) => {
+        console.log("Clear");
+        dialogs.alert("Clear SearchBar text")
+            .then(() => {
+                console.log("Dialog closed!");
+            });
+    });
+
+    searchBar.on("textChange", (args) => {
+        vm.set("sbResult", args.object.text);
+    });
+
+
+    stackLayout.addChild(searchBar);
+
+    page.bindingContext = vm;
+};
+
+
+exports.onSubmit = function(args) {
+    const searchBar = args.object;
+    console.log(`Searching for ${searchBar.text}`);
+}
+
+exports.onClear = function(args) {
+    const searchBar = args.object;
+    console.log("Clear event raised");
+}
+
+
+exports.calTap = function(args) {
+    const button = args.object;
+    const page = button.page;
+    const frame = page.frame;
+    frame.navigate('views/calendar/calendar')
+}

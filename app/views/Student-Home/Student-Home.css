@@ -1,0 +1,38 @@
+ .box {
+     align-items: stretch;
+     flex-direction: column;
+ }
+ 
+ .profile {
+     flex-grow: 1;
+     /*vertical-align: middle;*/
+     /*margin: 0 30;*/
+     box-shadow: 0 0 10 black;
+ }
+ 
+ .profilepic {
+     height: 150;
+ }
+ 
+ .field {
+     text-align: center;
+     margin-top: 10;
+ }
+ 
+ .cardStyle {
+     background-color: white;
+     color: black;
+ }
+ 
+ .far {
+     font-family: "Font Awesome 5 Free", "fa-regular-400";
+     font-weight: 400;
+ }
+ /* 
+    File name: fa-solid-900.ttf 
+    Font name: Font Awesome 5 Free
+*/
+ /* .fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+} */

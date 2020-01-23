@@ -1,0 +1,54 @@
+.box {
+    margin-top: 80px;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    /* margin-top: 10px; */
+}
+
+.lessonsTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.profile {
+    /* margin-top: 30px; */
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    /*vertical-align: middle;*/
+    /*margin: 0 30;*/
+    box-shadow: 0 0 3 black;
+    background-color: #eaeaea;
+}
+
+.field {
+    text-align: center;
+    margin-top: 10;
+}
+
+.cardStyle {
+    /* background-color: grey; */
+    color: black;
+    size: 90%;
+}
+
+.calendarTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 400px;
+}
+
+.button {
+    margin-top: 25px;
+    height: 200;
+    width: 200;
+    border: 3px solid;
+}

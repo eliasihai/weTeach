@@ -1,0 +1,48 @@
+<Page loaded="loaded" actionBarHidden="true" class="page" xmlns:lv="nativescript-ui-listview" xmlns="http://www.nativescript.org/tns.xsd">
+
+
+    <ActionBar title="" class="actionBar">
+        <ActionBar.actionItems>
+
+            <!--ios>
+                <ActionItem text="Options" ios.position="right" tap="{{onOptionsTapped}}" />
+            </ios-->
+            <android>
+                <ActionItem text="None" android.position="popup" tap="onNoneSetSelectionModeTap" />
+                <ActionItem text="Single" android.position="popup" tap="onSingleSetSelectionModeTap" />
+                <ActionItem text="Multiple" android.position="popup" tap="onMultipleSetSelectionModeTap" />
+                <ActionItem text="Range" android.position="popup" tap="onRangeSetSelectionModeTap" />
+            </android>
+        </ActionBar.actionItems>
+    </ActionBar>
+
+
+    <FlexboxLayout class="box">
+        <StackLayout class="form">
+
+            <Image src="~/images/logo.png" class="logo" />
+
+            <StackLayout class="input-field">
+                <TextField text="{{ email }}" hint="Email Address" class="input" keyboardType="email" autocapitalizationType="none" />
+                <Label text="{{ emailValid }}" textWrap="true" />
+
+                <StackLayout class="hr-light" />
+            </StackLayout>
+
+            <StackLayout class="input-field">
+                <TextField hint="Password" text="{{ password }}" secure="true" class="input" />
+                <StackLayout class="hr-light" />
+            </StackLayout>
+
+            <AbsoluteLayout rows="*" columns="*, *" class="selector">
+                <Label text="I'm a teacher ? " class="teacherLbl" />
+                <Switch checked="{{ type }}" class="teacherSwitch" />
+            </AbsoluteLayout>
+
+            <Button text="Login" tap="signIn" class="btn btn-primary m-t-10" />
+            <Button text="Register" class="btn btn-primary m-t-10" tap="register" />
+
+            <!--Button text="Home-page" class="btn btn-primary m-t-10" tap="Home"/-->
+        </StackLayout>
+    </FlexboxLayout>
+</Page>
