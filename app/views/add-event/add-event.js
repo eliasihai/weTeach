@@ -102,7 +102,7 @@ exports.onAdd = function() {
 
             if (eventCtrl.teacher._id == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
                 parseInt(eventCtrl.startHour) + 1 == parseInt(eventCtrl.calanderEvents[i].start) &&
-                parseInt(eventCtrl.endHour) == parseInt(eventCtrl.calanderEvents[i].end) + 1) {
+                parseInt(eventCtrl.endHour) == parseInt(eventCtrl.calanderEvents[i].end) - 1) {
                 console.log("Cant choose start time that include in other lesson with end hour");
                 validTime = true;
             }

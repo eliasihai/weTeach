@@ -35,102 +35,102 @@ function EventViewModel() {
 const eventCtrl = new EventViewModel();
 
 exports.onAdd = function() {
-    console.log("Start Hour selected", eventCtrl.startHour)
-    console.log("End Hour selected", eventCtrl.endHour)
-    console.log('User is: ', obj.student_id)
-    console.log("Date:", eventCtrl.Date)
-    console.log("teacher.phone:", eventCtrl.teacher.phone)
+    // console.log("Start Hour selected", eventCtrl.startHour)
+    // console.log("End Hour selected", eventCtrl.endHour)
+    // console.log('User is: ', obj.student_id)
+    // console.log("Date:", eventCtrl.Date)
+    // console.log("teacher.phone:", eventCtrl.teacher.phone)
 
     let validTime = false;
 
     let tchrIdStr = eventCtrl.teacher._id.toString();
-    console.log("tchrIdStr", tchrIdStr)
-    console.log("eventCtrl.teacherID", eventCtrl.calanderEvents[1].teacherID)
-        // if (eventCtrl.calanderEvents.length != 0) {
+    // console.log("tchrIdStr", tchrIdStr)
+    // console.log("eventCtrl.teacherID", eventCtrl.calanderEvents[1].teacherID)
+    if (eventCtrl.calanderEvents.length != 0) {
 
-    //     if (eventCtrl.startHour == eventCtrl.endHour) {
-    //         validTime = true
-    //         console.log("start == end")
-    //     }
+        if (eventCtrl.startHour == eventCtrl.endHour) {
+            validTime = true
+            console.log("start == end")
+        }
 
-    //     if ((parseInt(eventCtrl.startHour)) == 0) {
-    //         validTime = true
-    //         console.log("start == 0")
-    //     }
+        if ((parseInt(eventCtrl.startHour)) == 0) {
+            validTime = true
+            console.log("start == 0")
+        }
 
-    //     for (let i = 0; i < eventCtrl.calanderEvents.length; i++) {
-    //         let calendarEventFullDate = new Date(eventCtrl.calanderEvents[i].date)
-    //         console.log("calendarEventFullDate:", calendarEventFullDate)
-    //         let calendarEventDate = calendarEventFullDate.getMonth() + 1 + '/' + calendarEventFullDate.getDate() + '/' + calendarEventFullDate.getFullYear()
+        for (let i = 0; i < eventCtrl.calanderEvents.length; i++) {
+            let calendarEventFullDate = new Date(eventCtrl.calanderEvents[i].date)
+            console.log("calendarEventFullDate:", calendarEventFullDate)
+            let calendarEventDate = calendarEventFullDate.getMonth() + 1 + '/' + calendarEventFullDate.getDate() + '/' + calendarEventFullDate.getFullYear()
 
-    //         // Start hour cant be the same if we got that start our
-    //         if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
-    //             eventCtrl.startHour == eventCtrl.calanderEvents[i].start) {
-    //             console.log("start hour has been used")
-    //             validTime = true;
-    //         }
+            // Start hour cant be the same if we got that start our
+            if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
+                eventCtrl.startHour == eventCtrl.calanderEvents[i].start) {
+                console.log("start hour has been used")
+                validTime = true;
+            }
 
-    //         // if the lesson is 1 hour
-    //         if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
-    //             eventCtrl.startHour == parseInt(eventCtrl.calanderEvents[i].start) - 1 &&
-    //             eventCtrl.endHour == eventCtrl.calanderEvents[i].end) {
-    //             console.log("End hour cant be the same");
-    //             validTime = true;
-    //         }
+            // if the lesson is 1 hour
+            if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
+                eventCtrl.startHour == parseInt(eventCtrl.calanderEvents[i].start) - 1 &&
+                eventCtrl.endHour == eventCtrl.calanderEvents[i].end) {
+                console.log("End hour cant be the same");
+                validTime = true;
+            }
 
-    //         // 2 hours checking
-    //         // if the starthour have include in other lesson. (15:00 - 17:00) - and the start time he chose is 16:00
-    //         if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
-    //             eventCtrl.startHour == parseInt(eventCtrl.calanderEvents[i].start) + 1 &&
-    //             eventCtrl.endHour == eventCtrl.calanderEvents[i].end) {
-    //             console.log("Cant choose start time that include in other lesson");
-    //             validTime = true;
-    //         }
+            // 2 hours checking
+            // if the starthour have include in other lesson. (15:00 - 17:00) - and the start time he chose is 16:00
+            if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
+                eventCtrl.startHour == parseInt(eventCtrl.calanderEvents[i].start) + 1 &&
+                eventCtrl.endHour == eventCtrl.calanderEvents[i].end) {
+                console.log("Cant choose start time that include in other lesson");
+                validTime = true;
+            }
 
-    //         if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
-    //             parseInt(eventCtrl.startHour) + 1 == parseInt(eventCtrl.calanderEvents[i].start) &&
-    //             parseInt(eventCtrl.endHour) == parseInt(eventCtrl.calanderEvents[i].end) + 1) {
-    //             console.log("Cant choose start time that include in other lesson with end hour");
-    //             validTime = true;
-    //         }
-    //     }
-    // }
+            if (tchrIdStr == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
+                parseInt(eventCtrl.startHour) + 1 == parseInt(eventCtrl.calanderEvents[i].start) &&
+                parseInt(eventCtrl.endHour) == parseInt(eventCtrl.calanderEvents[i].end) - 1) {
+                console.log("Cant choose start time that include in other lesson with end hour");
+                validTime = true;
+            }
+        }
+    }
 
-    // console.log(validTime)
+    console.log(validTime)
 
-    // if (!validTime) {
-    //     httpModule.request({
-    //         url: "https://final-project-lessons.herokuapp.com/lecture/Insert",
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         content: JSON.stringify({
-    //             teacherID: eventCtrl.teacher._id,
-    //             studentID: obj.student_id,
-    //             teacherName: eventCtrl.teacher.firstname + ' ' + eventCtrl.teacher.lastname,
-    //             studentName: obj.studentName + ' ' + obj.studentLastName,
-    //             teacherPhone: eventCtrl.teacher.phone,
-    //             studentPhone: obj.studentPhone,
-    //             date: eventCtrl.Date,
-    //             start: eventCtrl.startHour,
-    //             end: eventCtrl.endHour,
-    //             title: eventCtrl.teacher.subject,
-    //         })
-    //     }).then((response) => {
-    //         const result = response.content.toJSON();
-    //         console.log(result)
+    if (!validTime) {
+        httpModule.request({
+            url: "https://final-project-lessons.herokuapp.com/lecture/Insert",
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            content: JSON.stringify({
+                teacherID: eventCtrl.teacher._id,
+                studentID: obj.student_id,
+                teacherName: eventCtrl.teacher.firstname + ' ' + eventCtrl.teacher.lastname,
+                studentName: obj.studentName + ' ' + obj.studentLastName,
+                teacherPhone: eventCtrl.teacher.phone,
+                studentPhone: eventCtrl.phone,
+                date: eventCtrl.Date,
+                start: eventCtrl.startHour,
+                end: eventCtrl.endHour,
+                title: eventCtrl.teacher.subject,
+            })
+        }).then((response) => {
+            const result = response.content.toJSON();
+            console.log(result)
 
-    //         if (result.status === 'ok') {
-    //             alert('Lesson has been added')
-    //             var topmost = frameModule.topmost();
-    //             topmost.navigate("views/teacher-page/teacher-page");
-    //         } else {
-    //             alert("Cant Add this lesson")
-    //         }
+            if (result.status === 'ok') {
+                alert('Lesson has been added')
+                var topmost = frameModule.topmost();
+                topmost.navigate("views/teacher-page/teacher-page");
+            } else {
+                alert("Cant Add this lesson")
+            }
 
-    //     }, (err) => {
-    //         console.log("err post=", err);
-    //     });
-    // }
+        }, (err) => {
+            console.log("err post=", err);
+        });
+    }
 }
 
 exports.pageLoaded = function(args) {
@@ -192,11 +192,17 @@ exports.phone = function() {
             obj.studentLastName = result.data[0].lastname;
             console.log("res-->", obj.studentLastName);
 
-            obj.studentPhone = result.data[0].phone;
-            console.log("res-->", obj.studentPhone);
+            // obj.studentPhone = result.data[0].phone;
+            // console.log("res-->", obj.studentPhone);
         }, (e) => {
             console.error(Error);
             alert(eventCtrl.phone + " Not valid")
         });
 
+    obj.studentPhone = eventCtrl.phone;
+}
+
+exports.onHomeTap = function(args) {
+    var topmost = frameModule.topmost();
+    topmost.navigate('views/teacher-page/teacher-page');
 }

@@ -115,4 +115,6 @@ exports.onHomeTap = function(args) {
 }
 
 
-exports.onInlineEventSelected = function(e) { console.log(e); }
+exports.onInlineEventSelected = function(args) {
+    console.log(args);
+}

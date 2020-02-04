@@ -61,12 +61,12 @@ exports.onItemTap = function(args) {
     dialogs.action({
         // message: "Are you want to delete this lecture?",
         cancelButtonText: "Cancel",
-        actions: ["Delete Lesson", "Teacher Details"]
+        actions: ["Teacher Details", "Delete Lesson", ]
     }).then(function(result) {
         console.log("Dialog result: " + result);
-        if (result == "Yes") {
+        if (result == "Delete Lesson") {
             console.log("index: ", index)
-            console.log("dsadsa", obj.calendarObsArray[index]._id)
+            console.log("index in calendarObsArray", obj.calendarObsArray[index]._id)
             obj.AfterDeleteLecture = obj.calendarObsArray
             httpModule.request({
                 url: "https://final-project-lessons.herokuapp.com/lecture/" + obj.AfterDeleteLecture[index]._id,

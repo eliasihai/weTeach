@@ -20,7 +20,7 @@
     <GridLayout rows="*,50" columns="*">
         <StackLayout row="0">
             <calendar:RadCalendar id="calendar" eventSource="{{calendarEvents}}" dateSelected="dateSelect" navigatedToDateEvent="navigatedToDateEvent"
-             viewMode="Month" minDate="{{ minDate }}" eventsViewMode="Inline" onEventViewTap="onEventViewTap" inlineEventSelected="onInlineEventSelected" />
+             viewMode="Month" minDate="{{ minDate }}" eventsViewMode="Inline" onEventViewTap="onEventViewTap" inlineEventSelectedEvent="onInlineEventSelected" />
         </StackLayout>
         <StackLayout row="1">
             <Button text="Add a lesson" class="btn btn-primary" tap="addLesson"></Button>

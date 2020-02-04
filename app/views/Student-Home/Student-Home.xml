@@ -24,11 +24,11 @@
                     <ListView.itemTemplate>
                         <Card:CardView >
                             <StackLayout class="cardStyle">
-                                <Label class="field" text="{{ 'Teacher Name: ' +  teacherName || 'Downloading...' }}" textWrap="true" />
-                                <Label class="field" text="{{'Subject: ' + title || 'Downloading...'}}" textWrap="true" />
-                                <Label class="field" text="{{'phone: ' +  teacherPhone || 'Downloading...'}}" textWrap="true" />
-                                <Label class="field" text="{{'Date: ' +  date || 'Downloading...'}}" textWrap="true" />
-                                <Label class="field" text="{{'Start Hour: ' +  start + ':00' || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{teacherName || 'Downloading...' }}" textWrap="true" />
+                                <Label class="field" text="{{title || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{teacherPhone || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{date || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{start + ':00 - ' +  end + ':00' || 'Downloading...'}}" textWrap="true" />
                             </StackLayout>
                         </Card:CardView>
                     </ListView.itemTemplate>
