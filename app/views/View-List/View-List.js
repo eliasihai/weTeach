@@ -33,7 +33,8 @@ exports.SearchButton = function(args) {
     obj.filteredTeachers = obj.myObservableArray.filter((item) => {
         return item.subject.toLowerCase().indexOf(searchBar.text.toLowerCase()) != -1 ||
             item.firstname.toLowerCase().indexOf(searchBar.text.toLowerCase()) != -1 ||
-            item.lastname.toLowerCase().indexOf(searchBar.text.toLowerCase()) != -1
+            item.lastname.toLowerCase().indexOf(searchBar.text.toLowerCase()) != -1 ||
+            item.city.toLowerCase().indexOf(searchBar.text.toLowerCase()) != -1
     });
 }
 

@@ -42,7 +42,7 @@
             <Button text="Login" tap="signIn" class="btn btn-primary m-t-10" />
             <Button text="Register" class="btn btn-primary m-t-10" tap="register" />
 
-            <!--Button text="Home-page" class="btn btn-primary m-t-10" tap="Home"/-->
+            
         </StackLayout>
     </FlexboxLayout>
 </Page>

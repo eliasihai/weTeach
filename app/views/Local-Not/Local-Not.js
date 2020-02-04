@@ -46,11 +46,21 @@ function doAddOnMessageReceivedCallback() {
         function(notificationData) {
             dialogs.alert({
                 title: "Notification received",
-                message: "ID: " + notificationData.id +
-                    "\nTitle: " + notificationData.title +
+                message: /*"ID: " + notificationData.id +*/ "\nTitle: " + notificationData.title +
                     "\nBody: " + notificationData.body,
                 okButtonText: "Excellent!"
             });
         }
     );
+}
+
+
+export function del() {
+    LocalNotifications.cancelAll();
+
+    LocalNotifications.getScheduledIds().then(
+        function(ids) {
+            console.log("ID's: " + ids);
+        }
+    )
 }

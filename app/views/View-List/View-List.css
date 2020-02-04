@@ -35,3 +35,7 @@
     font-weight: bold;
     vertical-align: center;
 }
+
+.list-group-item {
+    background-color: #D3D3D3;
+}

@@ -17,7 +17,7 @@ var pageData = fromObject({
     // Teacher values
     teacherFirstName: '',
     teacherLastName: '',
-    //teacher: JSON.parse(applicationSettings.getString('teacher')),
+    teacher: JSON.parse(applicationSettings.getString('teacher')),
     student: JSON.parse(applicationSettings.getString('user')),
     datePicker: '',
     minDate: '',
@@ -30,7 +30,8 @@ exports.pageLoaded = function(args) {
     page.bindingContext = pageData;
     let minDateVar = new Date();
     console.log("minDate:", minDateVar.getDate())
-    pageData.set("minDate", minDateVar)
+        //pageData.set("minDate", minDateVar)
+
     let user = JSON.parse(applicationSettings.getString('user'));
     var teacher = JSON.parse(applicationSettings.getString('teacher'));
     pageData.firstname = user.firstname;
@@ -103,12 +104,15 @@ exports.onNavigationButtonTap = function(args) {
     topmost.navigate("views/View-List/View-List");
 }
 
-exports.onEventViewTap = function(args) {
-    console.log("onEventViewTap")
-}
-
-
 exports.onHomeTap = function(args) {
+    let studentNav = JSON.parse(applicationSettings.getString('user'));
+    let teacherNav = JSON.parse(applicationSettings.getString('teacher'));
     var topmost = frameModule.topmost();
-    topmost.navigate("views/Student-Home/Student-Home");
+    if (studentNav.type == 'student') {
+        topmost.navigate('views/Student-Home/Student-Home');
+    } else if (teacherNav.type == 'teacher')
+        topmost.navigate('views/teacher-page/teacher-page');
 }
+
+
+exports.onInlineEventSelected = function(e) { console.log(e); }

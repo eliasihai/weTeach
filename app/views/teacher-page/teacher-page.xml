@@ -1,35 +1,23 @@
 
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:Card="@nstudio/nativescript-cardview" loaded="loaded">
-    <ActionBar title="Teacher managment page">
-        <!-- <navigation.actionBar>
-            <ActionItem ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"></ActionItem>
-            <ActionItem tap="onDelete"
-            ios.systemIcon="16" ios.position="right"
-            text="delete" android.position="popup"></ActionItem>
-
-        </navigation.actionBar>
-        <navigation.actionBar>
-            <NavigationButton text="Go Back" android.systemIcon="ic_menu_home" tap="onHomeTap"></NavigationButton>
-        </navigation.actionBar> -->
+    <ActionBar title="Teacher Managment Page">
+         <navigation.actionBar>
+           <ActionItem text="Log Out" android.position="actionBarIfRoom" tap="onLogout" />
+        </navigation.actionBar> 
     </ActionBar>
+
     <FlexboxLayout class="box">
-        <StackLayout class="title">
-            <Label text="{{'Hello, ' + user.firstname}}" textWrap="true" />
 
-        </StackLayout>
-        <StackLayout class="lessonsTitle" >
-            <Label text="Your lessons:" textWrap="true" />
-
-        </StackLayout>
         <ScrollView class="scrollView">
-            <StackLayout class="profile">
-                <ListView items="{{ calendarObsArray }}" itemTap="onItemTap" separatorColor="orangered" rowHeight="140" 
+            <StackLayout class="stackBox">
+                <ListView items="{{ calendarObsArray }}" itemTap="onItemTap" separatorColor="orangered" rowHeight="130" 
                  class="list-group" id="listView">
                     <ListView.itemTemplate>
                         <Card:CardView >
                             <StackLayout class="cardStyle">
                                 <Label class="field" text="{{ 'Name: ' +  studentName || 'Downloading...' }}" textWrap="true" />
-                                <Label class="field" text="{{'phone: ' +  studentPhone || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{'Phone: ' +  studentPhone || 'Downloading...'}}" textWrap="true" />
+                                <Label class="field" text="{{'Date: ' +  date || 'Downloading...'}}" textWrap="true" />
                                 <Label class="field" text="{{ end + ':00 ' + start + ':00 ' || 'Downloading...'}}" textWrap="true" />
                             </StackLayout>
                         </Card:CardView>
@@ -37,10 +25,10 @@
                 </ListView>
             </StackLayout>
         </ScrollView>
-        <StackLayout>
+        <!-- <StackLayout>
             <Label text="View in calendar:" textWrap="true" class="calendarTitle" />
 
-        </StackLayout>
+        </StackLayout> -->
         <StackLayout class="button">
             <image class="calendar" src="~/images/calendar.png" tap="calTap" />
         </StackLayout>

@@ -14,6 +14,7 @@ const obj = fromObject({
     firstNameTitle: '',
     title: '',
     start: '',
+    date: '',
     studentPhone: '',
     calendarObsArray: [],
     AfterDeleteLecture: [],
@@ -31,15 +32,20 @@ exports.loaded = function(args) {
     console.log("teacher id:", teacher._id)
     let teacherID = teacher._id
 
+    // let DateXML = new Date()
+    // console.log(DateXML.toISOString().slice(0, 10))
+    // let dayNew = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear()
+
     httpModule.getJSON("https://final-project-lessons.herokuapp.com/lecture/teacher/" + teacherID)
         .then((result) => {
             console.log(result.data)
+            let newDate = new Date()
             for (var i = 0; i < result.data.length; i++) {
                 obj.calendarObsArray = result.data;
                 obj.studentName = calendarObsArray[i].studentName;
                 obj.studentPhone = calendarObsArray[i].studentPhone;
+                obj.date = calendarObsArray[i].date;
                 obj.start = calendarObsArray[i].start;
-
             }
         }, (e) => {
             console.error(Error);
@@ -77,5 +83,17 @@ exports.calTap = function(args) {
     const button = args.object;
     const page = button.page;
     const frame = page.frame;
+    applicationSettings.setString('teacher', JSON.stringify(obj.user));
     frame.navigate('views/calendar/calendar')
+}
+
+exports.onItemClick = function(args) {
+    console.log("onItemClick", onItemClick.args)
+}
+
+exports.onLogout = function() {
+    applicationSettings.setString('user', 'null')
+    alert("loged out");
+    var topmost = frameModule.topmost();
+    topmost.navigate("views/login/login");
 }

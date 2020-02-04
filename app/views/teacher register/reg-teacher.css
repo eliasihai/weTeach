@@ -1,5 +1,5 @@
 .box {
-    margin: 5 5 5 5;
+    margin: 10;
     align-items: stretch;
     flex-direction: column;
 }
@@ -7,24 +7,31 @@
 .form {
     flex-grow: 1;
     vertical-align: middle;
-    margin: 0 30;
+    /* margin: 0 30; */
 }
 
 .btn-primary {
-    height: 40;
-    margin: 10 5 15 5;
+    /* height: 30; */
+    /* margin: 10 5 15 5; */
     background-color: red;
     border-radius: 5;
     font-size: 20;
     font-weight: 600;
 }
 
+.btn {
+    background-color: red;
+    border-radius: 5;
+    color: white;
+    height: 60px;
+}
+
 .input-field {
-    margin-bottom: 1;
+    margin: 11px;
 }
 
 .teacherLB {
-    padding-top: 60;
+    padding-top: 30;
     text-align: center;
     color: black;
     font-weight: bold;

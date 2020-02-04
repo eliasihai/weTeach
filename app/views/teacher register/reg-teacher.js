@@ -14,11 +14,14 @@ const obj = fromObject({
     repassword: '',
     phone: '',
     subject: '',
+    city: '',
+    address: '',
     subClicked: false,
     // Setting the listview binding source
     myTitles: [
         { title: "Math" },
-        { title: "English" }
+        { title: "English" },
+        { title: "Physics" }
     ]
 });
 
@@ -27,12 +30,7 @@ exports.loaded = function(args) {
     page.bindingContext = obj;
     console.log("Teacher Register page");
 };
-/*
-function onListViewLoaded(args) {
-    const listView = args.object;
-}
-exports.onListViewLoaded = onListViewLoaded;
-*/
+
 exports.onItemTap = function(args) {
     console.log(args)
     let item = obj.myTitles[args.index]
@@ -59,6 +57,10 @@ exports.register = function() {
         validForm = false
     if (obj.get('phone') == '')
         validForm = false;
+    if (obj.get('city') == '')
+        validForm = false;
+    if (obj.get('address') == '')
+        validForm = false;
 
     if (validForm)
         httpModule.request({
@@ -72,6 +74,8 @@ exports.register = function() {
                 password: obj.get('password'),
                 repassword: obj.get('repassword'),
                 phone: obj.get('phone'),
+                city: obj.get('city'),
+                address: obj.get('address'),
                 subject: obj.get('subject'),
                 type: 'teacher',
 
