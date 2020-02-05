@@ -107,7 +107,12 @@ exports.onAdd = function() {
                 validTime = true;
             }
 
-
+            if (eventCtrl.teacher._id == eventCtrl.calanderEvents[i].teacherID && eventCtrl.Date == calendarEventDate &&
+                parseInt(eventCtrl.startHour) == parseInt(eventCtrl.calanderEvents[i].start) + 1 &&
+                parseInt(eventCtrl.endHour) == parseInt(eventCtrl.calanderEvents[i].end) + 1) {
+                console.log("Cant choose start time that include in other lesson with end hour");
+                validTime = true;
+            }
             //console.log("(parseInt(eventCtrl.startHour)) + 1", (parseInt(eventCtrl.calanderEvents[i].start)))
         }
     }
@@ -162,7 +167,7 @@ exports.onAdd = function() {
             console.log("err post=", err);
         })
     } else {
-        alert("Cant Add this lesson")
+        alert("Cant Add this lesson");
     }
 }
 
@@ -214,8 +219,8 @@ exports.onPickerLoadedStart = function(eventData) {
     timePicker.on("timeChange", (args) => {
         // args is of type PropertyChangeData
         console.log("Start TIME picked: ", timePicker.hour, "Minutes: ", timePicker.minute);
-        console.log("eventCtrl.startHour", typeof timePicker.hour)
-            //console.log("Previous TIME: ", args.oldValue);
+        //console.log("eventCtrl.startHour", typeof timePicker.hour)
+        //console.log("Previous TIME: ", args.oldValue);
         eventCtrl.startHour = timePicker.hour;
         eventCtrl.minute = timePicker.minute;
     })
@@ -237,4 +242,9 @@ exports.onPickerLoadedEnd = function(eventData) {
         eventCtrl.endHour = timePicker.hour;
         eventCtrl.minute = timePicker.minute;
     })
+}
+
+exports.onHomeTap = function(args) {
+    var topmost = frameModule.topmost();
+    topmost.navigate('views/Student-Home/Student-Home');
 }

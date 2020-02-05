@@ -12,11 +12,11 @@
 }
 
 .time-picker {
-    background-color: olivedrab;
+    /* background-color: olivedrab;
     border-color: burlywood;
     border-width: 2;
     border-radius: 10;
-    color: whitesmoke;
+    color: whitesmoke; */
     vertical-align: middle;
     height: 300px;
 }

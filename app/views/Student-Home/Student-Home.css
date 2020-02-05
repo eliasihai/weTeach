@@ -22,6 +22,7 @@
  .cardStyle {
      background-color: #D3D3D3;
      color: #000000;
+     font-weight: bold;
  }
  /* .far {
      font-family: "Font Awesome 5 Free", "fa-regular-400";
